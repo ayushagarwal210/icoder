@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog Home{% endblock title %}
+
+{% block blogactive %}active{% endblock blogactive%}
+
+{% block body %}
+<div class="container my-4">
+  <h2>Featured Articles By iCoder -:</h2>
+  {% for Post in allPosts %}
+  <div class="col-md-12">
+    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">{{Post.author}}</strong>
+        <h3 class="mb-0">{{Post.title}}</h3>
+        <div class="mb-1 text-muted">{{Post.timestamp}}</div>
+        <p class="card-text mb-auto">{{Post.content | truncatechars:300}}</p>
+        <a href="/blog/{{Post.slug}}" class="stretched-link">Continue reading</a>
+      </div>
+      <!-- <div class="col-auto d-none d-lg-block"> -->
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock body %}
